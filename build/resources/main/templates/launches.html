@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>ExLabs Spacex Launches</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="/js/datatable.js"></script>
+
+	 <style type="text/css">
+	  th, td {
+	    width:20px;
+	    }
+	  </style>
+  
+</head>
+
+<body>
+    <table id="launch" class="display nowrap" style="width:70%">
+      <thead>
+            <tr>
+                <th style="width:20%;">Launch attribute</th>
+                
+                <th style="max-width:60%;">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+        	 <tr>
+        	 	<td>Flight Number</td>
+        	 	<td th:text="${launch.flight_number}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Mission Name</td>
+        	 	<td th:text="${launch.mission_name}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Mission ID</td>
+        	 	<td th:text="${launch.mission_id}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Launch Year</td>
+        	 	<td th:text="${launch.launch_year}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Launch Date Unix</td>
+        	 	<td th:text="${launch.launch_date_unix}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Launch Date UTC</td>
+        	 	<td th:text="${launch.launch_date_utc}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Launch Date Local</td>
+        	 	<td th:text="${launch.launch_date_local}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Tentative</td>
+        	 	<td th:text="${launch.is_tentative}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Tentative Max Precision</td>
+        	 	<td th:text="${launch.tentative_max_precision}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Tbd</td>
+        	 	<td th:text="${launch.tbd}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Launch Window</td>
+        	 	<td th:text="${launch.launch_window}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Rocket</td>
+        	 	<td th:text="${launch.LaunchRocket.toString()}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Ships</td>
+        	 	<td th:text="${launch.ships}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Telemetry</td>
+        	 	<td th:text="${launch.TelemetryObject.toString()}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Launch Site</td>
+        	 	<td th:text="${launch.Launch_siteObject.toString()}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Launch Success</td>
+        	 	<td th:text="${launch.launch_success}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Links</td>
+        	 	<td th:text="${launch.LinksObject.toString()}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Details</td>
+        	 	<td th:text="${launch.details}"></td>
+        	 </tr>
+        	 <tr>
+        	 	<td>Upcoming</td>
+        	 	<td th:text="${launch.upcoming}"></td>
+        	 </tr>
+        </tbody>
+     </table>
+    
+</body>
+
+<script>
+$(document).ready(function() {
+	 $('#launch').DataTable( {
+		"pageLength": 25,
+        columnDefs: [
+        {
+            targets: [ 0 ],
+            orderData: [ 0, 1 ]
+        }        
+	    ]
+	    } );
+    } );
+</script>
+</html>

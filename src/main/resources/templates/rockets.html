@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>ExLabs Spacex Rockets</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="/js/datatable.js"></script>
+
+	 <style type="text/css">
+	  th, td {
+	    width:20px;
+	    }
+	  </style>
+  
+</head>
+
+<body>
+    <table id="rockets" class="display nowrap" style="width:100%">
+      <thead>
+            <tr>
+                <th>ID</th>
+                <th>Active</th>
+                <th>Stages</th>
+                <th>Boosters</th>
+                <th>Cost Per Launch</th>
+                <th>Success Rate Percentage</th>
+                <th>First Flight</th>
+                <th>Country</th>
+                <th>Company</th>
+                <th>Height</th>
+                <th>Diameter</th>
+                <th>Mass</th>
+                <th style="width:20px;">Payload Weights</th>
+                <th>First Stage</th>
+                <th>Engines</th>
+                <th>Landing Legs</th>
+                <th style="width:20px;">Wikipedia</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        	 <tr th:each="rocket : ${rockets}">
+        	 	<td th:text="${rocket.id}">${rocket.id}</td>
+        	 	<td th:text="${rocket.active}">${rocket.active}</td>
+        	 	<td th:text="${rocket.stages}">${rocket.stages}</td>
+        	 	<td th:text="${rocket.boosters}">${rocket.boosters}</td>
+        	 	<td th:text="${rocket.cost_per_launch}">${rocket.cost_per_launch}</td>
+        	 	<td th:text="${rocket.success_rate_pct}">${rocket.success_rate_pct}</td>
+        	 	<td th:text="${rocket.first_flight}">${rocket.first_flight}</td>
+        	 	<td th:text="${rocket.country}">${rocket.country}</td>
+        	 	<td th:text="${rocket.company}">${rocket.company}</td>
+        	 	<td th:text="${rocket.height.toString()}">${rocket.height}</td>
+        	 	<td th:text="${rocket.diameter.toString()}">${rocket.diameter}</td>
+        	 	<td th:text="${rocket.mass.toString()}">${rocket.mass}</td>
+        	 	<td style="width:20px; height:100%;" th:text="${rocket.getPayload_weights()}">${rocket.payload_weights}</td>
+        	 	<td th:text="${rocket.first_stage.toString()}">${rocket.first_stage}</td>
+        	 	<td th:text="${rocket.engines.toString()}">${rocket.engines}</td>
+        	 	<td th:text="${rocket.landing_legs.toString()}">${rocket.landing_legs}</td>
+        	 	<td th:text="${rocket.wikipedia}">${rocket.wikipedia}</td>
+        	 	<td th:text="${rocket.description}" th:size="100">${rocket.description}</td>
+        	 </tr>
+        </tbody>
+     </table>
+    
+</body>
+
+<script>
+$(document).ready(function() {
+	 $('#rockets').DataTable( {
+	        columnDefs: [
+	        {
+	            targets: [ 0 ],
+	            orderData: [ 0, 1 ]
+	        } 
+	        
+	        ]
+	    } );
+    } );
+</script>
+</html>
